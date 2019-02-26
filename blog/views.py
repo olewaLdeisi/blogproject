@@ -110,8 +110,9 @@ class IndexView(ListView):
 class ArchivesView(IndexView):
 
     def get_queryset(self):
-        return super(ArchivesView,self).get_queryset().filter(created_time__year=self.kwargs.get('year'),
+        post_list = super(ArchivesView,self).get_queryset().filter(created_time__year=self.kwargs.get('year'),
                                                               created_time__month=self.kwargs.get('month')).order_by('-created_time')
+        return post_list
 
 class CategoryView(IndexView):
 
